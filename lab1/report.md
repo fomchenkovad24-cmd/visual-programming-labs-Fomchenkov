@@ -16,5 +16,20 @@
 ### 4. Flowchart диаграмма
 ![Flowchart](diagrams/flowchart.png)
 
+## Diffs
+![1](1screenshot.png) 
+![2](2screenshot.png) 
+![3](3screenshot.png) 
+![4](4screenshot.png) 
+![5](5screenshot.png) 
+![6](6screenshot.png) 
+![7](7screenshot.png) 
+![8](8screenshot.png) 
+![9](9screenshot.png) 
+![10](10screenshot.png) 
+![11](11screenshot.png) 
+![12](12screenshot.png) 
+![13](13screenshot.png) 
+![14](14screenshot.png)
 ## Вывод
 В ходе лабораторной работы я научился создавать диаграммы в четырёх разных стилях: BPMN, UML Activity, Sequence и Flowchart. Я также настроил свой первый репозиторий на GitHub. Еще для себя узнал, что диаграммы можно хранить прямо в виде текста через Mermaid и просматривать их на GitHub. В целом я разобрался, как описывать бизнес-процессы разными способами и сохранять все изменения в репозитории.
