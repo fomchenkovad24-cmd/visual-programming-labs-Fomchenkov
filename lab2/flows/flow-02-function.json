@@ -1,0 +1,72 @@
+[
+    {
+        "id": "3a47d2c403562c03",
+        "type": "tab",
+        "label": "Поток 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e3153b5ae13277d8",
+        "type": "inject",
+        "z": "3a47d2c403562c03",
+        "name": "число 7 каждые 5 сек",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "7",
+        "payloadType": "num",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "9f357c4029e61108"
+            ]
+        ]
+    },
+    {
+        "id": "9f357c4029e61108",
+        "type": "function",
+        "z": "3a47d2c403562c03",
+        "name": "processing",
+        "func": "const n = msg.payload;\nconst squares = [];\nconst meta = {\n    input: n,\n    generatedAt: new Date().toISOString(),\n    author: \"Фомченков\"\n};\nfor (let i = 1; i <= n; i++) {\n    if (i % 2 === 0) {\n        squares.push(i * i);\n    } else {\n        squares.push(i);\n    }\n}\nmsg.payload = {\n    original: n,\n    processed: squares,\n    meta: meta\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "330e994d4beb5c9d"
+            ]
+        ]
+    },
+    {
+        "id": "330e994d4beb5c9d",
+        "type": "debug",
+        "z": "3a47d2c403562c03",
+        "name": "result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "d4e8b711af57acdb",
+        "type": "tab",
+        "label": "Поток 12",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0e22e2fa1507d4c4",
+        "type": "inject",
+        "z": "d4e8b711af57acdb",
+        "name": "счетчик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 400,
+        "wires": [
+            [
+                "9cd9de87c0d0aaf7"
+            ]
+        ]
+    },
+    {
+        "id": "9cd9de87c0d0aaf7",
+        "type": "function",
+        "z": "d4e8b711af57acdb",
+        "name": "счетчики и переменная",
+        "func": "let flowCount = flow.get(\"counter\") || 0;\nflowCount++;\nflow.set(\"counter\", flowCount);\n\nlet globalCount = global.get(\"totalMessages\") || 0;\nglobalCount++;\nglobal.set(\"totalMessages\", globalCount);\n\nlet student = env.get(\"STUDENT_NAME\") || \"не задано\";\n\nmsg.payload = {\n    flowCounter: flowCount,\n    globalTotal: globalCount,\n    studentName: student,\n    time: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 400,
+        "wires": [
+            [
+                "b68ef25141c4d885"
+            ]
+        ]
+    },
+    {
+        "id": "b68ef25141c4d885",
+        "type": "debug",
+        "z": "d4e8b711af57acdb",
+        "name": "результат",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 400,
+        "wires": []
+    }
+]

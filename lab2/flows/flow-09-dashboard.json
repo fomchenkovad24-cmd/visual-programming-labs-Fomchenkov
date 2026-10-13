@@ -1,0 +1,155 @@
+[
+    {
+        "id": "d916f31d1a132d48",
+        "type": "tab",
+        "label": "Поток 9",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c801ed41e4e3c888",
+        "type": "ui_gauge",
+        "z": "d916f31d1a132d48",
+        "name": "gauge температуры",
+        "group": "97868ea925e3a39c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "температура",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 580,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "056511ec7d535ec0",
+        "type": "ui_chart",
+        "z": "d916f31d1a132d48",
+        "name": "chart температуры",
+        "group": "97868ea925e3a39c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "история температуры",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ccca74bb76c1f01",
+        "type": "inject",
+        "z": "d916f31d1a132d48",
+        "name": "датчик температуры",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "4294a99a91cf69aa"
+            ]
+        ]
+    },
+    {
+        "id": "4294a99a91cf69aa",
+        "type": "function",
+        "z": "d916f31d1a132d48",
+        "name": "генератор числа",
+        "func": "const value = +(18 + Math.random() * 8).toFixed(2);\nmsg.payload = value;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "c801ed41e4e3c888",
+                "056511ec7d535ec0"
+            ]
+        ]
+    },
+    {
+        "id": "97868ea925e3a39c",
+        "type": "ui_group",
+        "name": "датчик температуры",
+        "tab": "83e3d4dd8b25cb21",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "83e3d4dd8b25cb21",
+        "type": "ui_tab",
+        "name": "Лаба 2",
+        "icon": "thermometer",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "45490a2ad34e671e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

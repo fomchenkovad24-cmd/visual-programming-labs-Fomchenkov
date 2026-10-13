@@ -1,0 +1,93 @@
+[
+    {
+        "id": "80d728d6acd99ce0",
+        "type": "tab",
+        "label": "Поток 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "14958f3d63e4b0c5",
+        "type": "inject",
+        "z": "80d728d6acd99ce0",
+        "name": "старт",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "b2c32b383de7f9a5"
+            ]
+        ]
+    },
+    {
+        "id": "b2c32b383de7f9a5",
+        "type": "change",
+        "z": "80d728d6acd99ce0",
+        "name": "Set topic/timestamp/payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "lab2/fomchenkov/change",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "$now()",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "changed by Change node",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 320,
+        "wires": [
+            [
+                "f99454311bfa2f37"
+            ]
+        ]
+    },
+    {
+        "id": "f99454311bfa2f37",
+        "type": "debug",
+        "z": "80d728d6acd99ce0",
+        "name": "complete msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 320,
+        "wires": []
+    }
+]

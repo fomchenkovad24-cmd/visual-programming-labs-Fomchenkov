@@ -1,0 +1,145 @@
+[
+    {
+        "id": "5549fafc5abcefa9",
+        "type": "tab",
+        "label": "Поток 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e859ac9215140fa0",
+        "type": "inject",
+        "z": "5549fafc5abcefa9",
+        "name": "число 7",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "7",
+        "payloadType": "num",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "36feaafb82e47f74"
+            ]
+        ]
+    },
+    {
+        "id": "36feaafb82e47f74",
+        "type": "function",
+        "z": "5549fafc5abcefa9",
+        "name": "processing",
+        "func": "const n = msg.payload;\nconst squares = [];\nconst meta = {\n    input: n,\n    generatedAt: new Date().toISOString(),\n    author: \"Фомченков\"\n};\nfor (let i = 1; i <= n; i++) {\n    if (i % 2 === 0) {\n        squares.push(i * i);\n    } else {\n        squares.push(i);\n    }\n}\nmsg.payload = {\n    original: n,\n    processed: squares,\n    meta: meta\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "d177f54cc56caf48"
+            ]
+        ]
+    },
+    {
+        "id": "d177f54cc56caf48",
+        "type": "switch",
+        "z": "5549fafc5abcefa9",
+        "name": "Проверка >= 5",
+        "property": "payload.original",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "dabe93aabdd8d3b4"
+            ],
+            [
+                "3439bd47b9aaae5e"
+            ]
+        ]
+    },
+    {
+        "id": "dabe93aabdd8d3b4",
+        "type": "debug",
+        "z": "5549fafc5abcefa9",
+        "name": ">= 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "3439bd47b9aaae5e",
+        "type": "debug",
+        "z": "5549fafc5abcefa9",
+        "name": "< 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4a071f2e796cd39d",
+        "type": "inject",
+        "z": "5549fafc5abcefa9",
+        "name": "число 3",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "num",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "36feaafb82e47f74"
+            ]
+        ]
+    }
+]

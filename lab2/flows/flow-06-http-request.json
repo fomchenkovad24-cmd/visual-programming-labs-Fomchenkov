@@ -1,0 +1,76 @@
+[
+    {
+        "id": "bf6765dc275e8a14",
+        "type": "tab",
+        "label": "Поток 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1c1393ead1ea0a11",
+        "type": "inject",
+        "z": "bf6765dc275e8a14",
+        "name": "получить факт",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 340,
+        "wires": [
+            [
+                "b6bdac69117ceb92"
+            ]
+        ]
+    },
+    {
+        "id": "b6bdac69117ceb92",
+        "type": "http request",
+        "z": "bf6765dc275e8a14",
+        "name": "meteo facts",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.61&current_weather=true",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 340,
+        "wires": [
+            [
+                "02c38633346809cc"
+            ]
+        ]
+    },
+    {
+        "id": "02c38633346809cc",
+        "type": "debug",
+        "z": "bf6765dc275e8a14",
+        "name": "response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 340,
+        "wires": []
+    }
+]

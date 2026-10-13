@@ -1,0 +1,158 @@
+[
+    {
+        "id": "5d0e21dd11c1e3b5",
+        "type": "tab",
+        "label": "Поток 8",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d38e5f0e15d7df6a",
+        "type": "template",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "текст",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Привет от Фомченкова! Это get /api/text.",
+        "output": "str",
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "3f9672e66be2372a"
+            ]
+        ]
+    },
+    {
+        "id": "3f9672e66be2372a",
+        "type": "http response",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "/api/text",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "text/plain; charset=utf-8"
+        },
+        "x": 440,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "daf0418ca2201c7e",
+        "type": "http in",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "get /api/text",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 500,
+        "wires": [
+            [
+                "d38e5f0e15d7df6a"
+            ]
+        ]
+    },
+    {
+        "id": "a8fef050623be374",
+        "type": "http in",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "get /api/info",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "04a7ba142f711529"
+            ]
+        ]
+    },
+    {
+        "id": "686db5020b19d296",
+        "type": "http response",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "/api/info",
+        "statusCode": "200",
+        "headers": {},
+        "x": 440,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "04a7ba142f711529",
+        "type": "function",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "Info JSON",
+        "func": "msg.payload = {\n    student: \"Фомченков\",\n    lab: \"lab2\",\n    timestamp: new Date().toISOString()\n};\nmsg.headers = {\n    \"Content-Type\": \"application/json; charset=utf-8\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 600,
+        "wires": [
+            [
+                "686db5020b19d296"
+            ]
+        ]
+    },
+    {
+        "id": "048fc1246adae135",
+        "type": "http in",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "get /api/items",
+        "url": "/api/items",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "5319cfb04c24a251"
+            ]
+        ]
+    },
+    {
+        "id": "5319cfb04c24a251",
+        "type": "function",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "Items валидация",
+        "func": "const q = msg.req.query;\n\nif (!q.count) {\n    msg.statusCode = 400;\n    msg.payload = { error: \"count is required\" };\n    msg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\n    return msg;\n}\n\nconst count = parseInt(q.count, 10);\n\nif (isNaN(count) || count < 1 || count > 10) {\n    msg.statusCode = 400;\n    msg.payload = { error: \"count must be 1..10\" };\n    msg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\n    return msg;\n}\n\nmsg.statusCode = 200;\nmsg.payload = {\n    count: count,\n    items: Array.from({ length: count }, (_, i) => `item-${i + 1}`)\n};\nmsg.headers = { \"Content-Type\": \"application/json; charset=utf-8\" };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 700,
+        "wires": [
+            [
+                "6ed20e88daaad8bf"
+            ]
+        ]
+    },
+    {
+        "id": "6ed20e88daaad8bf",
+        "type": "http response",
+        "z": "5d0e21dd11c1e3b5",
+        "name": "/api/items",
+        "statusCode": "200",
+        "headers": {},
+        "x": 480,
+        "y": 700,
+        "wires": []
+    }
+]

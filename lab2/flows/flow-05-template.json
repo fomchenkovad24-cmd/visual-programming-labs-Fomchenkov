@@ -1,0 +1,71 @@
+[
+    {
+        "id": "d101b0469f8ac598",
+        "type": "tab",
+        "label": "Поток 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8eb5254981df4e69",
+        "type": "inject",
+        "z": "d101b0469f8ac598",
+        "name": "объект студента",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Фомченков\",\"group\":\"СДП-УИР-241\",\"year\":2026}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "06d5a728db1ab70d"
+            ]
+        ]
+    },
+    {
+        "id": "06d5a728db1ab70d",
+        "type": "template",
+        "z": "d101b0469f8ac598",
+        "name": "mustache JSON",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"student\": \"{{payload.name}}\",\n    \"group\": \"{{payload.group}}\",\n    \"year\": {{payload.year}},\n    \"greeting\": \"Привет, {{payload.name}} из группы {{payload.group}}!\"\n}",
+        "output": "json",
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "cc7629d78157460c"
+            ]
+        ]
+    },
+    {
+        "id": "cc7629d78157460c",
+        "type": "debug",
+        "z": "d101b0469f8ac598",
+        "name": "complete msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 340,
+        "wires": []
+    }
+]

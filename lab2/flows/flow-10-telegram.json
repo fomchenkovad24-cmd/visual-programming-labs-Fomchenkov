@@ -1,0 +1,218 @@
+[
+    {
+        "id": "8314bedc93694056",
+        "type": "tab",
+        "label": "Поток 10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0093350e40368382",
+        "type": "telegram sender",
+        "z": "8314bedc93694056",
+        "name": "",
+        "bot": "0c6dc707bce707d6",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dd262320ee4e477",
+        "type": "function",
+        "z": "8314bedc93694056",
+        "name": "/start",
+        "func": "msg.payload.content = \"Привет! Я бот лабораторной работы №2. Студент: Фомченков. Напиши /help для списка команд.\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 340,
+        "wires": [
+            [
+                "0093350e40368382"
+            ]
+        ]
+    },
+    {
+        "id": "297fe865a03b586e",
+        "type": "function",
+        "z": "8314bedc93694056",
+        "name": "/help",
+        "func": "msg.payload.content = \"Доступные команды:\\n/start — приветствие\\n/help — это сообщение\\n\\nЛюбое другое сообщение я повторю.\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 400,
+        "wires": [
+            [
+                "afed84b4e8134e55"
+            ]
+        ]
+    },
+    {
+        "id": "b5cca3072a036779",
+        "type": "function",
+        "z": "8314bedc93694056",
+        "name": "/repeat",
+        "func": "const text = msg.payload.content || \"\";\n\nif (text.startsWith(\"/\")) {\n    return null;\n}\n\nmsg.payload.content = text;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 460,
+        "wires": [
+            [
+                "98ec3221455616f6"
+            ]
+        ]
+    },
+    {
+        "id": "98ec3221455616f6",
+        "type": "telegram sender",
+        "z": "8314bedc93694056",
+        "name": "",
+        "bot": "0c6dc707bce707d6",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "afed84b4e8134e55",
+        "type": "telegram sender",
+        "z": "8314bedc93694056",
+        "name": "",
+        "bot": "0c6dc707bce707d6",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 710,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1cd402b02c02d138",
+        "type": "telegram receiver",
+        "z": "8314bedc93694056",
+        "name": "",
+        "bot": "0c6dc707bce707d6",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 270,
+        "y": 460,
+        "wires": [
+            [
+                "b5cca3072a036779"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "56916c752a702392",
+        "type": "telegram command",
+        "z": "8314bedc93694056",
+        "name": "",
+        "command": "/help",
+        "description": "список команд",
+        "registercommand": true,
+        "language": "",
+        "scope": "default",
+        "bot": "0c6dc707bce707d6",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 230,
+        "y": 400,
+        "wires": [
+            [
+                "297fe865a03b586e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0c2883939054a0d6",
+        "type": "telegram command",
+        "z": "8314bedc93694056",
+        "name": "",
+        "command": "/start",
+        "description": "запустить бота",
+        "registercommand": true,
+        "language": "",
+        "scope": "default",
+        "bot": "0c6dc707bce707d6",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 230,
+        "y": 340,
+        "wires": [
+            [
+                "8dd262320ee4e477"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0c6dc707bce707d6",
+        "type": "telegram bot",
+        "botname": "fomchenkov bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": "1000",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "16a9a91c27d9f255",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "id": "462f9932284347c9",
+        "type": "tab",
+        "label": "Поток 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cbb55647771fb697",
+        "type": "inject",
+        "z": "462f9932284347c9",
+        "name": "каждые 5 сек",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "lab2/<Фомченков>/basic",
+        "payload": "Фомченков",
+        "payloadType": "str",
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "492fa6e53264313f"
+            ]
+        ]
+    },
+    {
+        "id": "492fa6e53264313f",
+        "type": "debug",
+        "z": "462f9932284347c9",
+        "name": "complete msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 280,
+        "wires": []
+    }
+]
