@@ -9,11 +9,11 @@
 
 [redis acc](../screenshots/redis-account.png)
 [redis config edited](../screenshots/изменение-порта-и-хоста.png)
-[redis config saved](../screenshots\сохранение-изменений.png)
+[redis config saved](../screenshots/сохранение-изменений.png)
 
 ## Создание и чтение ключа (flow-09-redis.json)
 
 [flow-09](../screenshots\09-redis.png)
 
 ## Удаление и проверка (flow-10-redis.json)
-[flow-10](../screenshots\10-redis.png)
+[flow-10](../screenshots/10-redis.png)
