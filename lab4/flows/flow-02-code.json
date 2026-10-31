@@ -1,0 +1,77 @@
+{
+  "name": "flow-02-code",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "d2664e18-7077-4310-beb7-4a022f1f43ab",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const name = \"fomchenkov\";\nconst group = \"irm241\";\nlet payload = `${name}-${group}`;\n\nconst arr = [\"a\", \"b\", \"c\"];\nconst obj = { topic: `lab4/${name}/code`, tags: [] };\n\nfor (let i = 0; i < arr.length; i++) {\n  if (arr[i] === \"b\") {\n    obj.tags.push(arr[i].toUpperCase());\n  } else {\n    obj.tags.push(arr[i]);\n  }\n}\n\nif (payload.length > 5) {\n  payload = payload + \"-long\";\n}\n\nreturn [{ json: { payload, ...obj } }];"
+      },
+      "id": "165f9623-13e1-4595-9a80-17db3eaacc90",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        16
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6a4edfe0-eb9b-4eb6-a904-b2d5c27fef73",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        208,
+        16
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8e6bd64a-4487-4683-8f70-c5f7bc9d6064",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "XcWiE4FNpvL0M73b",
+  "tags": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "flow-01-manual-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "aa9ce74d-8c14-4ad5-857a-0d5a81ef5a06",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "payload",
+              "value": "fomchenkov",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "topic",
+              "value": "lab4/fomchenkov/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8012fcd4-39ae-4900-b638-988045af8815",
+      "name": "Set Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        16,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  console.log('payload:', item.json.payload);\n  console.log('topic:', item.json.topic);\n  return { json: { ...item.json, debug: 'ok' } };\n});"
+      },
+      "id": "7c81927e-aaef-4f7d-bd53-7a9ba26cbdfd",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        16
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b5263166-d221-47ea-982a-f8b6d5fffa1f",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "sNS5eRrwB9SnoNyV",
+  "tags": []
+}

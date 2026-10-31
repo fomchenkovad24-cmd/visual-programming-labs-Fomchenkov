@@ -1,0 +1,95 @@
+{
+  "name": "flow-09-redis",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e89f799e-c88b-4659-8b57-9cea767dd6ac",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "fomchenkov",
+        "value": "lab4-redis-success"
+      },
+      "id": "a3c8fb2b-c1ae-44b4-a402-3943eb8423ab",
+      "name": "Redis Set",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        16,
+        16
+      ],
+      "credentials": {
+        "redis": {
+          "id": "5orXFiHHce1UTbce",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "fomchenkov",
+        "options": {}
+      },
+      "id": "feeda780-65d4-4619-852e-7ca47bc7d06f",
+      "name": "Redis Get",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        208,
+        16
+      ],
+      "credentials": {
+        "redis": {
+          "id": "5orXFiHHce1UTbce",
+          "name": "Redis account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Redis Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Set": {
+      "main": [
+        [
+          {
+            "node": "Redis Get",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b0480ff5-b18b-42bc-894e-4b9703fbab78",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "RJU4ISDut2VCAOXD",
+  "tags": []
+}

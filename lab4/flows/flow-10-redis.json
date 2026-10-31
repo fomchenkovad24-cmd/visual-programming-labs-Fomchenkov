@@ -1,0 +1,93 @@
+{
+  "name": "flow-10-redis",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "fc75652d-b3e0-4fa8-8003-8fae96c354c6",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "fomchenkov"
+      },
+      "id": "54584172-0bc7-486c-b8f3-7a75b7208fe3",
+      "name": "Redis Delete",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        16,
+        16
+      ],
+      "credentials": {
+        "redis": {
+          "id": "5orXFiHHce1UTbce",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "keys",
+        "keyPattern": "Keys"
+      },
+      "id": "96321f70-70f7-44ae-9449-0dbd9f14e5c7",
+      "name": "Redis Exists",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        208,
+        16
+      ],
+      "credentials": {
+        "redis": {
+          "id": "5orXFiHHce1UTbce",
+          "name": "Redis account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Redis Delete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Delete": {
+      "main": [
+        [
+          {
+            "node": "Redis Exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e2f24383-7388-4d61-98ae-9e0825fc1c93",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "PFXhnRekzJspzhPf",
+  "tags": []
+}

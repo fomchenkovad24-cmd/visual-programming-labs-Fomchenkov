@@ -1,0 +1,101 @@
+{
+  "name": "flow-04-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "165c7668-140d-4c4c-af07-5368fab1373a",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "topic",
+              "value": "lab4/fomchenkov/set",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "payload",
+              "value": "fomchenkov-irm241-data",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5970ddcd-4fd1-45c8-aaa6-d81bf8d136ef",
+      "name": "Set Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        16,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('complete msg object:', JSON.stringify($input.all(), null, 2));\nreturn $input.all();"
+      },
+      "id": "9471a7ec-5ceb-4d74-9923-f3d410049393",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        16
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "Set Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Data": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "9756c70b-e84e-4b0c-a57e-c387263ffe8f",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "i4OsCTJaR1I5qjgm",
+  "tags": []
+}

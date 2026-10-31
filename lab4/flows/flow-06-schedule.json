@@ -1,0 +1,64 @@
+{
+  "name": "flow-06-schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "cd820afe-04d3-40b3-aede-bb6636dfcca1",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -96,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { now: new Date().toISOString(), student: 'fomchenkov' } }];"
+      },
+      "id": "e42ccd37-79e8-4d1e-801e-d67ede6cf671",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        112,
+        16
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "cb568c8d-6ea2-475f-a615-1542df5ffba9",
+  "meta": {
+    "instanceId": "db28be09c89c47cedb64d9615759c776a5348ecb74eaedf4124303a94907e540"
+  },
+  "nodeGroups": [],
+  "id": "3P3K8gd2GDXpR91Z",
+  "tags": []
+}
