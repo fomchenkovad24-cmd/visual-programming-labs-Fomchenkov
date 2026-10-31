@@ -33,6 +33,15 @@
 - [09-redis-set.png](../screenshots/09-redis.png)
 - [10-redis-delete.png](../screenshots/10-redis.png)
 
+## Flows
+[1](../flows/flow-01-manual-set.json)
+[2](../flows/flow-02-code.json)
+[3](../flows/flow-03-if.json)
+[4](../flows/flow-04-set.json)
+[5](../flows/flow-05-http.json)
+[6](../flows/flow-06-schedule.json)
+[9](../flows/flow-09-redis.json)
+[10](../flows/flow-10-redis.json)
 
 ## Выводы
 n8n — это мощный инструмент для визуального программирования, который позволяет быстро автоматизировать рутинные задачи без написания большого количества кода. Удобно, что можно комбинировать готовые ноды с кодом на JavaScript. Redis отлично подходит для быстрого обмена данными, а Schedule Trigger — для регулярных задач. Также я научился обходить ограничения (например, отсутствие Docker и ноды Exists в Redis), используя альтернативные инструменты и логику.
