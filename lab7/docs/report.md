@@ -135,9 +135,9 @@
 *Главная страница workspace опубликована.*
 
 ### Промпты и генерация
-![AI Prompt 1](screenshots/01-ai-prompt1.png)
-![AI Prompt 2](screenshots/01-ai-prompt2.png)
-![AI Prompt 3](screenshots/01-ai-prompt3.png)
+![AI Prompt 1](../screenshots/01-ai-prompt1.png)
+![AI Prompt 2](../screenshots/01-ai-prompt2.png)
+![AI Prompt 3](../screenshots/01-ai-prompt3.png)
 *Скриншоты процесса генерации структуры через ИИ.*
 
 ### Внесение изменений и наполнение данными
